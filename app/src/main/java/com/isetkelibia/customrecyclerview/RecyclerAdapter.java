@@ -27,30 +27,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             R.drawable.powerpoint,
             R.drawable.outlook};
 
-    class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView itemImage;
-        private TextView itemTitle;
-        private TextView itemDetail;
-
-        private ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            itemImage = itemView.findViewById(R.id.item_image);
-            itemTitle = itemView.findViewById(R.id.item_title);
-            itemDetail = itemView.findViewById(R.id.item_detail);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-
-                    Snackbar.make(v, titles[position] + " : " + details[position],
-                            Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-            });
-        }
-    }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -69,5 +45,27 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public int getItemCount() {
         return titles.length;
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView itemImage;
+        private TextView itemTitle;
+        private TextView itemDetail;
+
+        private ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            itemImage = itemView.findViewById(R.id.item_image);
+            itemTitle = itemView.findViewById(R.id.item_title);
+            itemDetail = itemView.findViewById(R.id.item_detail);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    Snackbar.make(v, titles[position] + " : " + details[position],
+                            Snackbar.LENGTH_LONG).show();
+                }
+            });
+        }
     }
 }
